@@ -4,11 +4,10 @@ import datetime
 
 from django.core.management import call_command
 
-from main.models import Artista, Etiqueta, UsuarioArtista, \
-    UsuarioEtiquetaArtista, UsuarioAmigo
+from main.models import Artista, Etiqueta, UsuarioArtista, UsuarioEtiquetaArtista, UsuarioAmigo
 
 
-lim=50
+lim=100
 artistF = "carga/artists.dat"
 tagF = "carga/tags.dat"
 usartF = "carga/user_artists.dat"
@@ -53,7 +52,7 @@ def populateUserArtists():
         print "Creando relaciones usuario-artista..."
         i=0
         for row in reader:
-            if int(row[1])<lim:
+            try:
                 usuarioId = row[0]
                 artista = Artista.objects.get(idArtista=int(row[1]))
                 t = row[2]
@@ -61,6 +60,9 @@ def populateUserArtists():
                 i+=1
                 if i>lim+50:
                     break
+            except Artista.DoesNotExist:
+                print"No existe el artista " + row[1]
+            
 
 def populateUserFriend():
     with open(UstagF) as f:
@@ -83,7 +85,7 @@ def populateUserTagArtists():
         print "Creando relaciones userartisttag..."        
         i=0
         for row in reader:
-            if int(row[1])<=lim and int(row[2]) <=lim:
+            try:
                 userid=row[0]
                 artista=Artista.objects.get(idArtista=int(row[1]))
                 tag = Etiqueta.objects.get(idTag=int(row[2]))
@@ -92,7 +94,14 @@ def populateUserTagArtists():
                 i+=1
                 if i>lim+50:
                     break
-
+                
+            except Artista.DoesNotExist:
+                print "Artista no insertado " + row[1]
+            except Etiqueta.DoesNotExist:
+                print "Etiqueta no insertada " + row[2]
+            
+            
+            
 if __name__ == '__main__':
     populateBBDD()
     print "Done!"
