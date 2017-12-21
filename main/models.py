@@ -16,4 +16,25 @@ class Etiqueta():
     tagValue = models.CharField(null=True, blank=True)
     def __unicode__(self):
         return self.tagValue
+
+class UsuarioArtista(models.Model):
+    usuarioId = models.IntegerField(null=False, blank=False)
+    artista = models.ForeignKey(Artista)
+    tiempoEscucha = models.IntegerField(null=False, blank=False)
+    def __unicode__(self):
+        return self.tiempoEscucha
+
+class UsuarioEtiquetaArtista(models.Model):
+    usuarioId = models.IntegerField(null=False, blank=False)
+    artista = models.ForeignKey(Artista)
+    tag = models.ForeignKey(Etiqueta)
+    fecha = models.DateField(null=False, blank=False)
+    def __unicode__(self):
+        return self.fecha
+
+class UsuarioAmigo(models.Model):
+    usuarioId = models.IntegerField(null=False, blank=False)
+    amigoId = models.IntegerField(null=False, blank=False)
+    def __unicode__(self):
+        return self.usuarioId
     
