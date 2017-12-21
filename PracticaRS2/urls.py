@@ -14,6 +14,8 @@ urlpatterns = patterns('',
 #     url(r'^descubre/', include('PracticaRS2.views.descubre')),
     url(r'^populate/', 'main.views.populateDB'),
     url(r'^search/', 'main.views.buscarPorUsuario'),
+    url(r'^masescuchas/', 'main.views.masEscuchas'),
+    
     
 
     # Uncomment the admin/doc line below to enable admin documentation:

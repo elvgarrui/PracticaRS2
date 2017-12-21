@@ -24,3 +24,6 @@ def buscarPorUsuario(request):
     else:
         formulario = SearchForm()
     return render_to_response('search.html',{'formulario':formulario}, context_instance=RequestContext(request))
+
+# def masEscuchas(request):
+#     

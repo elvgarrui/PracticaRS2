@@ -31,7 +31,7 @@ class UsuarioEtiquetaArtista(models.Model):
     tag = models.ForeignKey(Etiqueta)
     fecha = models.DateField(null=False, blank=False)
     def __unicode__(self):
-        return self.fecha
+        return self.usuarioId
 
 class UsuarioAmigo(models.Model):
     usuarioId = models.IntegerField(null=False, blank=False)

@@ -9,8 +9,9 @@
 {% block contenido %}
 	<h2>Lista de artistas</h2>
 	<hr>
-		{% for dato in usuarioArtista %}
-			<h3>{{dato.artista}}</h3>
+		{% for dato in artistas %}
+			<h3>{{dato.artista.nombre}}</h3>
+			<img src="{{dato.artista.pictureUrl}}" alt="{{dato.artista.nombre}}"/>
 			<hr>
 		{% empty %}
 			<li>No hay artistas</li>
