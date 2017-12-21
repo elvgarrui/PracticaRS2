@@ -39,14 +39,11 @@ def masEscuchas(request):
             escuchas[artista] = weight
     
     artistas=[]
-    
-    sorted(escuchas.values())
-    
+#     print sorted(escuchas.values())
     for i in range(3):
-        masE= max(escuchas.iteritems(), key=operator.itemgetter(1))
-        artistas.append(Artista.objects.get(idArtista=masE[0]))
-        del escuchas[masE[0]]
-    
+        masE= max(escuchas.iteritems(), key=operator.itemgetter(1))[0]
+        artistas.append(Artista.objects.get(idArtista=masE))
+        del escuchas[masE]
 #     artistas = Artista.objects.all()
     
-    return render_to_response('mas_escuchados.html',{'artistas':artistas,'clicks':masE[1]})
+    return render_to_response('mas_escuchados.html',{'artistas':artistas})

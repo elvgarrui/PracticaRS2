@@ -12,7 +12,7 @@
 		{% for dato in artistas %}
 			<h3>{{dato.nombre}}</h3>
 			<img src="{{dato.pictureUrl}}" alt="{{dato.nombre}}"/>
-			<p>Numero de reproducciones: {{clicks}}</p>
+			<p>Numero de reproducciones: {{dato.reproducciones}}</p>
 			<hr>
 		{% empty %}
 			<li>No hay artistas</li>

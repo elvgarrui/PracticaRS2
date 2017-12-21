@@ -12,6 +12,18 @@ class Artista(models.Model):
     def __unicode__(self):
         return self.nombre
     
+    def reproducciones(self):
+        res = 0
+        ua = UsuarioArtista.objects.all()
+        for row in ua:
+            artista = int(row.artista.id)
+            weight = row.tiempoEscucha
+            if artista==self.idArtista:
+                res += weight
+        return res
+    
+    reproducciones = property(reproducciones)
+    
 class Etiqueta(models.Model):
     idTag = models.IntegerField(null=True, blank=True)
     tagValue = models.CharField(null=True, blank=True, max_length=50)
