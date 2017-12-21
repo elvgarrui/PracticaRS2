@@ -1,0 +1,19 @@
+{% extends 'inicio.html' %}
+
+{% block titulo%} Music {% endblock %}
+
+{% block encabezado %}
+	<h1>Artistas por usuario</h1>
+{% endblock %}
+
+{% block contenido %}
+	<h2>Lista de artistas</h2>
+	<hr>
+		{% for dato in usuarioArtista %}
+			<h3>{{dato.artista}}</h3>
+			<hr>
+		{% empty %}
+			<li>No hay artistas</li>
+		{% endfor %}
+{% endblock %}
+	

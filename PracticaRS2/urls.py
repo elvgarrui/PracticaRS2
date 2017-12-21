@@ -8,10 +8,13 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', 'PracticaRS2.views.inicial', name='inicial'),
-    url(r'^tusArtistas/', include('PracticaRS2.views.tusartistas')),
-    url(r'^topEscuchado/', include('PracticaRS2.views.topartistas')),
-    url(r'^descubre/', include('PracticaRS2.views.descubre')),
+    url(r'^$', 'main.views.inicio'),
+#     url(r'^tusArtistas/', include('PracticaRS2.views.tusartistas')),
+#     url(r'^topEscuchado/', include('PracticaRS2.views.topartistas')),
+#     url(r'^descubre/', include('PracticaRS2.views.descubre')),
+    url(r'^populate/', 'main.views.populateDB'),
+    url(r'^search/', 'main.views.buscarPorUsuario'),
+    
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
