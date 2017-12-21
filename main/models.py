@@ -1,8 +1,9 @@
+from django.core.validators import URLValidator
 from django.db import models
 from django.db.models.fields import CharField
 
-# Create your models here.
 
+# Create your models here.
 class Artista(models.Model):
     idArtista = models.IntegerField(null=True, blank=True)
     nombre = models.CharField(null=True, blank=True)
@@ -11,7 +12,7 @@ class Artista(models.Model):
     def __unicode__(self):
         return self.nombre
     
-class Etiqueta():
+class Etiqueta(models.Model):
     idTag = models.IntegerField(null=True, blank=True)
     tagValue = models.CharField(null=True, blank=True)
     def __unicode__(self):
