@@ -1,3 +1,21 @@
+ARTIST:
+ID NAME URL PICTUREURL
+
+TAGS:
+tagID	tagValue
+
+USER_ARTISTS:
+userID	artistID	weight
+
+USERFRIENDS:
+userID	friendID
+
+USERTAGGEDARTISTS:
+userID	artistID	tagID	day	month	year
+
+USERTAGGEDARTISTSTIMESTAMP:
+userID	artistID	tagID	timestamp
+
 
 ====================
 hetrec2011-lastfm-2k
