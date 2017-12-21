@@ -6,7 +6,7 @@ from django.db.models.fields import CharField
 # Create your models here.
 class Artista(models.Model):
     idArtista = models.IntegerField(null=True, blank=True)
-    nombre = models.CharField(null=True, blank=True)
+    nombre = models.CharField(null=True, blank=True, max_length=50)
     url = models.URLField(validators=[URLValidator()], null=True, blank=True)
     pictureUrl = models.URLField(validators=[URLValidator()], null=True, blank=True)
     def __unicode__(self):
@@ -14,7 +14,7 @@ class Artista(models.Model):
     
 class Etiqueta(models.Model):
     idTag = models.IntegerField(null=True, blank=True)
-    tagValue = models.CharField(null=True, blank=True)
+    tagValue = models.CharField(null=True, blank=True, max_length=50)
     def __unicode__(self):
         return self.tagValue
 
