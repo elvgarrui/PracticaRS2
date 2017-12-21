@@ -7,7 +7,7 @@ from django.core.management import call_command
 from main.models import Artista, Etiqueta, UsuarioArtista, UsuarioEtiquetaArtista, UsuarioAmigo
 
 
-lim=100
+lim=300
 artistF = "carga/artists.dat"
 tagF = "carga/tags.dat"
 usartF = "carga/user_artists.dat"
@@ -61,7 +61,8 @@ def populateUserArtists():
                 if i>lim+50:
                     break
             except Artista.DoesNotExist:
-                print"No existe el artista " + row[1]
+                pass
+#                 print"No existe el artista " + row[1]
             
 
 def populateUserFriend():
@@ -96,9 +97,11 @@ def populateUserTagArtists():
                     break
                 
             except Artista.DoesNotExist:
-                print "Artista no insertado " + row[1]
+#                 print "Artista no insertado " + row[1]
+                pass
             except Etiqueta.DoesNotExist:
-                print "Etiqueta no insertada " + row[2]
+#                 print "Etiqueta no insertada " + row[2]
+                pass
             
             
             

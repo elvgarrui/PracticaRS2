@@ -6,6 +6,7 @@ from main.forms import SearchForm
 from main.models import *
 from populate import populateBBDD
 
+import operator
 
 def inicio(request):
     return render_to_response('inicio.html')
@@ -25,5 +26,27 @@ def buscarPorUsuario(request):
         formulario = SearchForm()
     return render_to_response('search.html',{'formulario':formulario}, context_instance=RequestContext(request))
 
-# def masEscuchas(request):
-#     
+def masEscuchas(request):
+    escuchas={} #Reproducciones de artistas
+    ua = UsuarioArtista.objects.all()
+    for row in ua:
+        artista = int(row.artista.id)
+        weight = row.tiempoEscucha
+        if artista in escuchas:
+            aux=escuchas[artista]
+            escuchas[artista] = weight+aux
+        else:  
+            escuchas[artista] = weight
+    
+    artistas=[]
+    
+    sorted(escuchas.values())
+    
+    for i in range(3):
+        masE= max(escuchas.iteritems(), key=operator.itemgetter(1))
+        artistas.append(Artista.objects.get(idArtista=masE[0]))
+        del escuchas[masE[0]]
+    
+#     artistas = Artista.objects.all()
+    
+    return render_to_response('mas_escuchados.html',{'artistas':artistas,'clicks':masE[1]})
