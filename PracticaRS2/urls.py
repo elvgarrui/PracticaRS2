@@ -13,8 +13,11 @@ urlpatterns = patterns('',
 #     url(r'^topEscuchado/', include('PracticaRS2.views.topartistas')),
 #     url(r'^descubre/', include('PracticaRS2.views.descubre')),
     url(r'^populate/', 'main.views.populateDB'),
+    url(r'^loadrs/', 'main.views.loadRS'),
     url(r'^search/', 'main.views.buscarPorUsuario'),
     url(r'^masescuchas/', 'main.views.masEscuchas'),
+    
+    
     
     
 

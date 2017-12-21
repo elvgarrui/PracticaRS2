@@ -1,4 +1,5 @@
 #encoding:utf-8
+import shelve
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
@@ -8,12 +9,23 @@ from populate import populateBBDD
 
 import operator
 
+Prefs={}   # matriz de usuarios y puntuaciones a cada a items
+ItemsPrefs={}   # matriz de items y puntuaciones de cada usuario. Inversa de Prefs
+SimItems=[]  # matriz de similitudes entre los items
+
+def loadDict():
+    shelf = shelve.open("dataRS.dat")
+
 def inicio(request):
     return render_to_response('inicio.html')
 
 def populateDB(request):
     populateBBDD()
     return render_to_response('populate.html')
+
+def loadRS(request):
+    loadDict()
+    return render_to_response('loadRS.html')
 
 # Create your views here.
 def buscarPorUsuario(request):
