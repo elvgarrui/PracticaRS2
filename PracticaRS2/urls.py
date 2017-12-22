@@ -16,6 +16,8 @@ urlpatterns = patterns('',
     url(r'^loadrs/', 'main.views.loadRS'),
     url(r'^search/', 'main.views.buscarPorUsuario'),
     url(r'^masescuchas/', 'main.views.masEscuchas'),
+    url(r'^descubre/', 'main.views.descubre'),
+
     
     
     

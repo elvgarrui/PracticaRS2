@@ -58,7 +58,7 @@ def populateUserArtists():
                 t = row[2]
                 UsuarioArtista.objects.get_or_create(usuarioId=usuarioId,artista=artista,tiempoEscucha=t)
                 i+=1
-                if i>lim+50:
+                if i>lim*2:
                     break
             except Artista.DoesNotExist:
                 pass
@@ -75,10 +75,10 @@ def populateUserFriend():
             amigoId=row[1]
             UsuarioAmigo.objects.get_or_create(usuarioId=usuarioId,amigoId=amigoId)
             i+=1
-            if i>lim+50:
+            if i>lim*2:
                 break;
-
-    
+ 
+     
     
 def populateUserTagArtists():
     with open(UstagF) as f:
@@ -93,7 +93,7 @@ def populateUserTagArtists():
                 fecha = datetime.date(int(row[5]), int(row[4]), int(row[3]))
                 UsuarioEtiquetaArtista.objects.get_or_create(usuarioId=userid,artista=artista,fecha=fecha,tag=tag)
                 i+=1
-                if i>lim+50:
+                if i>lim*2:
                     break
                 
             except Artista.DoesNotExist:
